@@ -8,16 +8,20 @@ import android.widget.Toast
 import com.teamwork.josehidalgo.R
 import com.teamwork.josehidalgo.domain.usecases.DomainTask
 import com.teamwork.josehidalgo.domain.usecases.RequestTasksUsecase
+import com.teamwork.josehidalgo.ui.App
 import com.teamwork.josehidalgo.ui.adapter.TaskAdapter
 import com.teamwork.josehidalgo.ui.utils.ToolbarManager
 import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.activity_detail.*
 import org.jetbrains.anko.ctx
 import org.jetbrains.anko.find
+import javax.inject.Inject
 
 class DetailActivity : AppCompatActivity(), ToolbarManager {
 
     override val toolbar by lazy { find<Toolbar>(R.id.toolbar) }
+
+    @Inject lateinit var requestTasksUsecase: RequestTasksUsecase
 
     var disposable: Disposable? = null
     lateinit var taskAdapter : TaskAdapter
@@ -31,6 +35,8 @@ class DetailActivity : AppCompatActivity(), ToolbarManager {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
+
+        App.appComponent.inject(this)
 
         toolbarTitle = intent.getStringExtra(NAME) + " " + ctx.getString(R.string.new_tasks)
         enableHomeAsUp { onBackPressed() }
@@ -52,8 +58,7 @@ class DetailActivity : AppCompatActivity(), ToolbarManager {
     }
 
     private fun loadTasks() {
-        val requestTasks = RequestTasksUsecase(intent.getStringExtra(ID))
-        disposable = requestTasks.execute()
+        disposable = requestTasksUsecase.execute(intent.getStringExtra(ID))
                 .subscribe(
                         { task -> tasks.add(task) },
                         { error -> Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show() },

@@ -9,6 +9,7 @@ import com.crashlytics.android.Crashlytics
 import com.teamwork.josehidalgo.R
 import com.teamwork.josehidalgo.data.Projects
 import com.teamwork.josehidalgo.domain.usecases.RequestProjectsUsecase
+import com.teamwork.josehidalgo.ui.App
 import com.teamwork.josehidalgo.ui.adapter.ProjectsAdapter
 import com.teamwork.josehidalgo.ui.utils.ToolbarManager
 import io.fabric.sdk.android.Fabric
@@ -16,10 +17,13 @@ import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.find
 import org.jetbrains.anko.startActivity
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), ToolbarManager {
 
     override val toolbar by lazy { find<Toolbar>(R.id.toolbar) }
+
+    @Inject lateinit var requestProjectsUsecase: RequestProjectsUsecase
 
     var disposable: Disposable? = null
 
@@ -28,6 +32,8 @@ class MainActivity : AppCompatActivity(), ToolbarManager {
         Fabric.with(this, Crashlytics())
 
         setContentView(R.layout.activity_main)
+
+        App.appComponent.inject(this)
 
         swipeContainer.setOnRefreshListener { loadProjects() }
         swipeContainer.setColorSchemeResources(R.color.theme_primary, R.color.theme_accent)
@@ -47,8 +53,7 @@ class MainActivity : AppCompatActivity(), ToolbarManager {
     }
 
     private fun loadProjects() {
-        val requestProjects = RequestProjectsUsecase()
-        disposable = requestProjects.execute()
+        disposable = requestProjectsUsecase.execute()
                 .subscribe(
                         { result -> swipeContainer.isRefreshing = false
                                     updateUI(result) },

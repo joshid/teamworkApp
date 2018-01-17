@@ -20,6 +20,9 @@ buildscript {
         calligraphy_version = '2.2.0'
         circleImage_version = '2.2.0'
 
+        dagger_version = '2.11'
+        annotations_version = '10.0-b28'
+
         okhttp_version = '3.8.0'
         loggin_interceptor_version = '3.8.0'
         retrofit_version = '2.1.0'
@@ -29,10 +32,8 @@ buildscript {
         picasso_version = '2.5.2'
 
         junit_version = '4.12'
-        mockito_version = '2.8.9'
-        runner_version = '1.0.1'
-        rules_version = '0.5'
-        espresso_version = '3.0.1'
+        mockito_version = '1.5.0'
+        spek_version = '1.0.25'
 
         commonDependencies = [
                 anko                : "org.jetbrains.anko:anko-sdk15:${anko_version}",
@@ -49,7 +50,11 @@ buildscript {
                 autoFitTextView     : "me.grantland:autofittextview:${autoFitTextView_version}",
                 crashlytics         : "com.crashlytics.sdk.android:crashlytics:${crashlytics_version}",
                 calligraphy         : "uk.co.chrisjenx:calligraphy:${calligraphy_version}",
-                circleImageView     : "de.hdodenhof:circleimageview:${circleImage_version}"
+                circleImageView     : "de.hdodenhof:circleimageview:${circleImage_version}",
+
+                dagger              : "com.google.dagger:dagger:${dagger_version}",
+                daggerCompiler      : "com.google.dagger:dagger-compiler:${dagger_version}",
+                annotations         : "org.glassfish:javax.annotation:${annotations_version}"
         ]
 
         dataDependencies = [
@@ -64,13 +69,9 @@ buildscript {
 
         testDependencies = [
                 junit               : "junit:junit:${junit_version}",
-                mockitoCore         : "org.mockito:mockito-core:${mockito_version}",
-                mockitoInline       : "org.mockito:mockito-inline:${mockito_version}",
-                annotations         : "com.android.support:support-annotations:${support_library_version}",
-                runner              : "com.android.support.test:runner:${runner_version}",
-                rules               : "com.android.support.test:rules:${rules_version}",
-                espresso            : "com.android.support.test.espresso:espresso-core:${espresso_version}",
-                espressoContrib     : "com.android.support.test.espresso:espresso-contrib:${espresso_version}"
+                mockito             : "com.nhaarman:mockito-kotlin:${mockito_version}",
+                spek                : "org.jetbrains.spek:spek:${spek_version}",
+                kotlin              : "org.jetbrains.kotlin:kotlin-stdlib:${kotlin_version}"
         ]
     }
 

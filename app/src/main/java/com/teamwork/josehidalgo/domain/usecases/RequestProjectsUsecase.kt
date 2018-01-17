@@ -1,20 +1,19 @@
 package com.teamwork.josehidalgo.domain.usecases
 
-import com.teamwork.josehidalgo.data.ApiService
 import com.teamwork.josehidalgo.data.Projects
+import com.teamwork.josehidalgo.data.TwApiInterface
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class RequestProjectsUsecase() : Usecase<Projects> {
+@Singleton
+class RequestProjectsUsecase @Inject constructor(private val api: TwApiInterface) {
 
-    val apiService by lazy {
-        ApiService()
-    }
+    fun execute(): Observable<Projects> {
 
-    override fun execute(): Observable<Projects> {
-
-        return apiService.loadProjects()
+        return api.loadProjects()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
     }
