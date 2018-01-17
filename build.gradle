@@ -1,0 +1,101 @@
+buildscript {
+
+    ext {
+
+        android_compile_sdk_version = 26
+        android_build_tools_version = '26.0.2'
+
+        application_id = "com.teamwork.josehidalgo"
+        android_min_sdk_version = 21
+        android_target_sdk_version = 26
+        version_code = 1
+        version_name = "0.0.1"
+        support_library_version = '26.1.0'
+        costLayout_version = '1.0.2'
+
+        anko_version = '0.9.1'
+        kotlin_version = '1.2.10'
+        autoFitTextView_version = '0.2.1'
+        crashlytics_version = '2.8.0@aar'
+        calligraphy_version = '2.2.0'
+        circleImage_version = '2.2.0'
+
+        okhttp_version = '3.8.0'
+        loggin_interceptor_version = '3.8.0'
+        retrofit_version = '2.1.0'
+        moshi_version = '2.0.0'
+        rxjava_version = '2.3.0'
+        rxandroid_version = '2.0.1'
+        picasso_version = '2.5.2'
+
+        junit_version = '4.12'
+        mockito_version = '2.8.9'
+        runner_version = '1.0.1'
+        rules_version = '0.5'
+        espresso_version = '3.0.1'
+
+        commonDependencies = [
+                anko                : "org.jetbrains.anko:anko-sdk15:${anko_version}",
+                kotlin              : "org.jetbrains.kotlin:kotlin-stdlib-jre7:${kotlin_version}"
+        ]
+
+        appDependencies = [
+                appcompat           : "com.android.support:appcompat-v7:${support_library_version}",
+                design              : "com.android.support:design:${support_library_version}",
+                cardview            : "com.android.support:cardview-v7:${support_library_version}",
+                constLayout         : "com.android.support.constraint:constraint-layout:${costLayout_version}",
+                recyclerView        : "com.android.support:recyclerview-v7:${support_library_version}",
+
+                autoFitTextView     : "me.grantland:autofittextview:${autoFitTextView_version}",
+                crashlytics         : "com.crashlytics.sdk.android:crashlytics:${crashlytics_version}",
+                calligraphy         : "uk.co.chrisjenx:calligraphy:${calligraphy_version}",
+                circleImageView     : "de.hdodenhof:circleimageview:${circleImage_version}"
+        ]
+
+        dataDependencies = [
+                okhttp              : "com.squareup.okhttp3:okhttp:${okhttp_version}",
+                logginInterceptor   : "com.squareup.okhttp3:logging-interceptor:${loggin_interceptor_version}",
+                retrofit            : "com.squareup.retrofit2:retrofit:${retrofit_version}",
+                moshi               : "com.squareup.retrofit2:converter-moshi:${moshi_version}",
+                rxjava              : "com.squareup.retrofit2:adapter-rxjava2:${rxjava_version}",
+                rxandroid           : "io.reactivex.rxjava2:rxandroid:${rxandroid_version}",
+                picasso             : "com.squareup.picasso:picasso:${picasso_version}"
+        ]
+
+        testDependencies = [
+                junit               : "junit:junit:${junit_version}",
+                mockitoCore         : "org.mockito:mockito-core:${mockito_version}",
+                mockitoInline       : "org.mockito:mockito-inline:${mockito_version}",
+                annotations         : "com.android.support:support-annotations:${support_library_version}",
+                runner              : "com.android.support.test:runner:${runner_version}",
+                rules               : "com.android.support.test:rules:${rules_version}",
+                espresso            : "com.android.support.test.espresso:espresso-core:${espresso_version}",
+                espressoContrib     : "com.android.support.test.espresso:espresso-contrib:${espresso_version}"
+        ]
+    }
+
+
+    repositories {
+        google()
+        jcenter()
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url 'https://maven.fabric.io/public' }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

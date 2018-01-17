@@ -1,0 +1,20 @@
+<resources>
+    <!-- APP -->
+    <string name="app_name">TeamWork Projects</string>
+    <string name="activity_project_name">Projects</string>
+    <string name="created_on">Created on</string>
+    <string name="last_change_on">Last change on</string>
+    <string name="time_estimated">Estimated</string>
+    <string name="no_estimated">None</string>
+    <string name="new_tasks">new tasks</string>
+
+    <!-- ACTIONS -->
+    <string name="action_refresh">Refresh</string>
+
+    <!-- ERRORS -->
+    <string name="error_option_unknown">Refresh</string>
+
+    <!-- UTILS -->
+    <string name="wip">Work in Progress</string>
+
+</resources>

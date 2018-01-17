@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    // MAIN THEMES
+
+    <color name="theme_primary">#3077ea</color>
+    <color name="theme_primary_dark">#152b71</color>
+    <color name="theme_primary_light">#3dbdd4</color>
+    <color name="theme_accent">#55c743</color>
+
+    // COMMON
+    <color name="theme_window_background">#d9d9d9</color>
+    <color name="theme_clear">#ffffff</color>
+    <color name="theme_clear_dark">#ebebeb</color>
+    <color name="theme_clear_transparent">#ddffffff</color>
+    <color name="theme_black">#000000</color>
+    <color name="theme_transparent">#00000000</color>
+
+    // TEXT
+    <color name="primary_text">#000000</color>
+    <color name="secondary_text">#505050</color>
+
+    // FORMS
+    <color name="forms_border">#505050</color>
+    <color name="forms_background">#EBEBEB</color>
+
+    // ALERTS
+    <color name="alert_red">#ab2424</color>
+    <color name="alert_yellow">#BDC30A</color>
+    <color name="alert_green">#7ED321</color>
+
+    // DIVIDERS
+    <color name="divider_color">#B6B6B6</color>
+    <color name="divider_grey">#e4e4e5</color>
+
+    // BUTTONS
+    <color name="button_green">#63cf43</color>
+    <color name="button_pink">#ef214a</color>
+    <color name="button_blue">#2f8fea</color>
+    <color name="button_grey">#505050</color>
+
+</resources>
