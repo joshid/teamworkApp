@@ -1,6 +1,6 @@
 package com.teamwork.josehidalgo.data
 
-import com.teamwork.josehidalgo.domain.usecases.DomainTask
+import com.teamwork.josehidalgo.domain.DomainTask
 import io.reactivex.Observable
 
 /**

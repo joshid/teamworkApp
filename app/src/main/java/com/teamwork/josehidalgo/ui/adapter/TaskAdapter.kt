@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.teamwork.josehidalgo.R
-import com.teamwork.josehidalgo.domain.usecases.DomainTask
+import com.teamwork.josehidalgo.domain.DomainTask
 import com.teamwork.josehidalgo.extensions.ctx
 import com.teamwork.josehidalgo.extensions.loadImg
 import com.teamwork.josehidalgo.extensions.toDate

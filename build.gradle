@@ -33,7 +33,6 @@ buildscript {
 
         junit_version = '4.12'
         mockito_version = '1.5.0'
-        spek_version = '1.0.25'
 
         commonDependencies = [
                 anko                : "org.jetbrains.anko:anko-sdk15:${anko_version}",
@@ -70,7 +69,6 @@ buildscript {
         testDependencies = [
                 junit               : "junit:junit:${junit_version}",
                 mockito             : "com.nhaarman:mockito-kotlin:${mockito_version}",
-                spek                : "org.jetbrains.spek:spek:${spek_version}",
                 kotlin              : "org.jetbrains.kotlin:kotlin-stdlib:${kotlin_version}"
         ]
     }

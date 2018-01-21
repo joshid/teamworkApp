@@ -61,7 +61,6 @@ dependencies {
 
     testImplementation testDependencies.junit
     testImplementation testDependencies.mockito
-    testImplementation testDependencies.spek
     testImplementation testDependencies.kotlin
 }
 

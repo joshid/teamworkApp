@@ -1,6 +1,7 @@
 package com.teamwork.josehidalgo.domain.usecases
 
 import com.teamwork.josehidalgo.data.TwApiInterface
+import com.teamwork.josehidalgo.domain.DomainTask
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers

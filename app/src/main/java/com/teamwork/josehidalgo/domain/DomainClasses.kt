@@ -1,4 +1,4 @@
-package com.teamwork.josehidalgo.domain.usecases
+package com.teamwork.josehidalgo.domain
 
 /**
  * Created by jnhidalgo on 17/1/18.
