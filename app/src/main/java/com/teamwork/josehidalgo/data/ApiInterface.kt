@@ -1,5 +1,6 @@
 package com.teamwork.josehidalgo.data
 
+import com.teamwork.josehidalgo.domain.DomainProject
 import com.teamwork.josehidalgo.domain.DomainTask
 import io.reactivex.Observable
 
@@ -9,6 +10,6 @@ import io.reactivex.Observable
 
 interface TwApiInterface {
 
-    fun loadProjects(): Observable<Projects>
+    fun loadProjects(): Observable<DomainProject>
     fun loadTasks(id: String): Observable<DomainTask>
 }

@@ -42,6 +42,7 @@ class DetailActivity : AppCompatActivity(), ToolbarManager, TWView<List<DomainTa
 
         presenter.view = this
         presenter.projectID = intent.getStringExtra(ID)
+        presenter.getTasks()
 
         toolbarTitle = intent.getStringExtra(NAME) + " " + ctx.getString(R.string.new_tasks)
         enableHomeAsUp { onBackPressed() }
@@ -53,11 +54,6 @@ class DetailActivity : AppCompatActivity(), ToolbarManager, TWView<List<DomainTa
     override fun onPause() {
         super.onPause()
         presenter.disposable?.dispose()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        presenter.getTasks()
     }
 
     /////////////////////////////////////////////////////////////////

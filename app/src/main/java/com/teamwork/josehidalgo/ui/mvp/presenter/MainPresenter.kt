@@ -1,6 +1,6 @@
 package com.teamwork.josehidalgo.ui.mvp.presenter
 
-import com.teamwork.josehidalgo.data.Projects
+import com.teamwork.josehidalgo.domain.DomainProject
 import com.teamwork.josehidalgo.domain.usecases.RequestProjectsUsecase
 import com.teamwork.josehidalgo.ui.mvp.view.TWView
 import io.reactivex.disposables.Disposable
@@ -13,7 +13,8 @@ import javax.inject.Inject
 class MainPresenter() {
 
     var disposable: Disposable? = null
-    var view: TWView<Projects>? = null
+    var view: TWView<List<DomainProject>>? = null
+    var projects = mutableListOf<DomainProject>()
 
     @Inject
     lateinit var requestProjectsUsecase: RequestProjectsUsecase
@@ -26,8 +27,9 @@ class MainPresenter() {
     fun getProjects() {
         disposable = requestProjectsUsecase.execute()
                 .subscribe(
-                        { result -> view?.showItems(result) },
-                        { error -> view?.showMessage("Error") }
+                        { project -> projects.add(project) },
+                        { error -> view?.showMessage("Error") },
+                        { view?.showItems(projects) }
                 )
     }
 }

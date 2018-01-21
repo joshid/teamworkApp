@@ -6,7 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.Toolbar
 import com.crashlytics.android.Crashlytics
 import com.teamwork.josehidalgo.R
-import com.teamwork.josehidalgo.data.Projects
+import com.teamwork.josehidalgo.domain.DomainProject
 import com.teamwork.josehidalgo.ui.App
 import com.teamwork.josehidalgo.ui.adapter.ProjectsAdapter
 import com.teamwork.josehidalgo.ui.mvp.presenter.MainPresenter
@@ -19,7 +19,7 @@ import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity(), ToolbarManager, TWView<Projects> {
+class MainActivity : AppCompatActivity(), ToolbarManager, TWView<List<DomainProject>> {
 
     override val toolbar by lazy { find<Toolbar>(R.id.toolbar) }
 
@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity(), ToolbarManager, TWView<Projects> {
         App.appComponent.inject(this)
 
         presenter.view = this
+        presenter.getProjects()
 
         swipeContainer.setOnRefreshListener { presenter.getProjects() }
 
@@ -51,20 +52,15 @@ class MainActivity : AppCompatActivity(), ToolbarManager, TWView<Projects> {
         presenter.disposable?.dispose()
     }
 
-    override fun onResume() {
-        super.onResume()
-        presenter.getProjects()
-    }
-
     /////////////////////////////////////////////////////////////////
     //                                                             //
     //                    INTERFACE METHODS                        //
     //                                                             //
     /////////////////////////////////////////////////////////////////
 
-    override fun showItems(projects: Projects) {
+    override fun showItems(projects: List<DomainProject>) {
         val adapter = ProjectsAdapter(projects) {
-            startActivity<DetailActivity>(DetailActivity.ID to it.id, DetailActivity.NAME to it.name)
+            startActivity<DetailActivity>(DetailActivity.ID to it.projectID, DetailActivity.NAME to it.projectName)
         }
         projectList.adapter = adapter
         toolbarTitle =  "${projects.size} " + getString(R.string.activity_project_name)
